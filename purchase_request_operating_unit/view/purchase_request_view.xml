@@ -37,7 +37,7 @@
                       string="Operating Unit" groups="operating_unit.group_multi_operating_unit"
                       context="{'group_by':'operating_unit_id'}"/>
               </xpath>
-              <field name="warehouse_id" position="after">
+              <field name="picking_type_id" position="after">
                   <field name="operating_unit_id" groups="operating_unit.group_multi_operating_unit"/>
               </field>
             </field>
