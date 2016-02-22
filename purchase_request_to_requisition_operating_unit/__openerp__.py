@@ -4,13 +4,14 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 {
-    "name": "Purchase Request Procurement with Operating Units",
+    "name": "Purchase Request to Call for Bids with Operating Units",
     "version": "9.0.1.0.0",
     "author": "Eficent",
     "website": "www.eficent.com",
     "category": "Purchase Management",
-    "depends": ["purchase_request_procurement",
+    "depends": ["purchase_request_to_requisition",
                 "purchase_request_operating_unit",
-                'procurement_operating_unit'],
+                "purchase_requisition_operating_unit"],
     'installable': True,
+    'active': False,
 }

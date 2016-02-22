@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent Business and IT Consulting Services S.L. -
-# Jordi Ballester Alomar
-# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# © 2016 Eficent Business and IT Consulting Services S.L.
+# © 2016 Serpent Consulting Services Pvt. Ltd.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
-
-from openerp import fields, models, api, _
+from openerp import api, fields, models, _
 from openerp.exceptions import except_orm
 
 
-class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
-    _inherit = "purchase.request.line.make.purchase.order"
+class PurchaseRequestLineMakePurchaseRequisition(models.TransientModel):
+    _inherit = "purchase.request.line.make.purchase.requisition"
 
     operating_unit_id = fields.Many2one(
         'operating.unit',
@@ -19,7 +17,7 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
 
     @api.model
     def default_get(self, fields):
-        res = super(PurchaseRequestLineMakePurchaseOrder, self).\
+        res = super(PurchaseRequestLineMakePurchaseRequisition, self).\
             default_get(fields)
         request_line_obj = self.env['purchase.request.line']
         request_line_ids = self._context.get('active_ids', [])
@@ -39,12 +37,10 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
         return res
 
     @api.model
-    def _prepare_purchase_order(self, picking_type, location, company_id):
-        data = super(PurchaseRequestLineMakePurchaseOrder, self).\
-            _prepare_purchase_order(picking_type, location, company_id)
+    def _prepare_purchase_requisition(self, picking_type_id,
+                                      company_id):
+        res = super(PurchaseRequestLineMakePurchaseRequisition, self).\
+            _prepare_purchase_requisition(picking_type_id, company_id)
         if self.operating_unit_id:
-            data['requesting_operating_unit_id'] = \
-                self.operating_unit_id.id
-            data['operating_unit_id'] = \
-                self.operating_unit_id.id
-        return data
+            res.update({'operating_unit_id': self.operating_unit_id.id})
+        return res

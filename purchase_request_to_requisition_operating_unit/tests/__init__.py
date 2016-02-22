@@ -3,4 +3,4 @@
 # © 2016 Serpent Consulting Services Pvt. Ltd.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
-from . import wizard
+from . import test_purchase_request_to_requisition_operating_unit
