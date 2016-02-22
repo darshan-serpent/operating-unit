@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import fields, models, api
+from openerp import fields, models, api, _
 
 
 class PurchaseRequest(models.Model):
@@ -40,14 +40,29 @@ class PurchaseRequest(models.Model):
             raise Warning(_('The Company in the Purchase Request and in '
                             'the Operating Unit must be the same.'))
 
+    @api.one
+    @api.constrains('operating_unit_id', 'picking_type_id')
+    def _check_warehouse_operating_unit(self):
+        picking_type = self.picking_type_id
+        if picking_type:
+            if picking_type.warehouse_id and\
+                    picking_type.warehouse_id.operating_unit_id\
+                    and self.operating_unit_id and\
+                    picking_type.warehouse_id.operating_unit_id !=\
+                    self.operating_unit_id:
+                raise Warning(_('Configuration error!\nThe\
+                Purchase Request and the Warehouse of picking type\
+                must belong to the same Operating Unit.'))
+
     @api.onchange('operating_unit_id')
     def _onchange_operating_unit_id(self):
-        Warehouse = self.env['stock.warehouse']
+        type_obj = self.env['stock.picking.type']
         if self.operating_unit_id:
-            whs = Warehouse.search([('operating_unit_id', '=',
-                                     self.operating_unit_id.id)])
-            if whs:
-                self.warehouse_id = whs[0].id
+            types = type_obj.search([('code', '=', 'incoming'),
+                                     ('warehouse_id.operating_unit_id', '=',
+                                      self.operating_unit_id.id)])
+            if types:
+                self.picking_type_id = types[:1]
             else:
                 raise Warning(_("No Warehouse found with the "
                                 "Operating Unit indicated in the "
