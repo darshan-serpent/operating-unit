@@ -26,7 +26,7 @@ class PurchaseRequestLineMakePurchaseRequisition(models.TransientModel):
         for line in request_line_obj.browse(request_line_ids):
             line_operating_unit_id = line.request_id.operating_unit_id \
                 and line.request_id.operating_unit_id.id or False
-            if operating_unit_id is not False \
+            if operating_unit_id\
                     and line_operating_unit_id != operating_unit_id:
                 raise except_orm(
                     _('Could not process !'),
@@ -35,7 +35,6 @@ class PurchaseRequestLineMakePurchaseRequisition(models.TransientModel):
             else:
                 operating_unit_id = line_operating_unit_id
         res['operating_unit_id'] = operating_unit_id
-
         return res
 
     @api.model
@@ -43,5 +42,6 @@ class PurchaseRequestLineMakePurchaseRequisition(models.TransientModel):
                                       company_id):
         res = super(PurchaseRequestLineMakePurchaseRequisition, self).\
             _prepare_purchase_requisition(picking_type_id, company_id)
-        res.update({'operating_unit_id': self.operating_unit_id.id})
+        if self.operating_unit_id:
+            res.update({'operating_unit_id': self.operating_unit_id.id})
         return res
