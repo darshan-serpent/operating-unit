@@ -3,4 +3,4 @@
 # Jordi Ballester Alomar
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
-from . import model
+from . import test_purchase_request_procurement_operating_unit
