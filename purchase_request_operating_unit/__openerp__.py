@@ -1,27 +1,12 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2014 Eficent (<http://www.eficent.com/>)
-#               <contact@eficent.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2015 Eficent Business and IT Consulting Services S.L. -
+# Jordi Ballester Alomar
+# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 {
     "name": "Operating Unit in Purchase Requests",
-    "version": "1.0",
+    "version": "9.0.1.0.0",
     "author": "Eficent",
     "website": "http://www.eficent.com",
     "category": "Purchase Management",
@@ -86,17 +71,9 @@ To contribute to this module, please visit http://odoo-community.org.
 
 
     """,
-    "init_xml": [],
-    "update_xml": [
+    "data": [
         "view/purchase_request_view.xml",
         "security/purchase_security.xml",
     ],
-    'demo_xml': [
-
-    ],
-    'test': [
-    ],
     'installable': True,
-    'active': False,
-    'certificate': '',
 }
