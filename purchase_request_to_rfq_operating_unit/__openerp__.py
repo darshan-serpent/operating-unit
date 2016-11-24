@@ -12,8 +12,7 @@
     "description": """
 Purchase Request to RFQ with Operating Units
 ============================================
-This module adds the possibility to create or update Requests for
-Quotation (RFQ) from Purchase Request Lines.
+This module pass the Operating Unit from the purchase request to the RFQ.
 
 Installation
 ============
@@ -43,7 +42,8 @@ quantity to them, recalculating the minimum order quantity,
 if it exists for the supplier of that RFQ.
 
 In case that you create a new RFQ, the request lines will also be
-consolidated into as few as possible lines in the RFQ.
+consolidated into as few as possible lines in the RFQ. The operating unit is
+pass to the PO
 
 
 For further information, please visit:
