@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent Business and IT Consulting Services S.L. -
-# Jordi Ballester Alomar
-# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# © 2016 Eficent Business and IT Consulting Services S.L.
+# © 2016 Serpent Consulting Services Pvt. Ltd.
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 from openerp.tests import common
 from openerp.tools import SUPERUSER_ID
 
@@ -36,6 +35,8 @@ class TestPurchaseRequestToRfq(common.TransactionCase):
             'product_qty': 5.0,
         }
         self.purchase_request_line = self.purchase_request_line.create(vals)
+        purchase_request.button_to_approve()
+        purchase_request.button_approved()
 
     def test_purchase_request_to_purchase_requisition(self):
         vals = {
