@@ -15,8 +15,7 @@
     "description": """
 Purchase Request to Call for Bids with Operating Units
 ======================================================
-This module adds the possibility to create or update Requests for
-Call for Bid from Purchase Request Lines.
+This module pass the Operating Unit from the purchase request to the bid.
 
 Installation
 ============
@@ -44,7 +43,8 @@ the application will search for existing lines matching the request line,
 and will add the extra quantity to them
 
 In case that you create a new Call for Bids, the request lines will also be
-consolidated into as few as possible lines in the RFQ.
+consolidated into as few as possible lines in the RFQ. The operating unit is
+pass to the PO in that case.
 
 
 For further information, please visit:
