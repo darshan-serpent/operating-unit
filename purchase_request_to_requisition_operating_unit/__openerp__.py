@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent Business and IT Consulting Services S.L. -
-# Jordi Ballester Alomar
-# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# © 2016 Eficent Business and IT Consulting Services S.L.
+# © 2016 Serpent Consulting Services Pvt. Ltd.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 {
@@ -65,7 +64,8 @@ Credits
 Contributors
 ------------
 
-* Jordi Ballester <jordi.ballester@eficent.com>
+* Eficent Business and IT Consulting Services S.L. <contact@eficent.com>
+* Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
 
 
 Maintainer
