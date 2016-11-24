@@ -12,7 +12,7 @@ This module introduces the following features:
 
 * The user’s default Operating Unit (OU) is proposed at the time of creating the Purchase Request.
 
-* Security rules are defined to ensure that users can only see the Purcahse Request of that Operating Units in which they are allowed access to.
+* Security rules are defined to ensure that users can only see the Purchase Request of that Operating Units in which they are allowed access to.
 
 
 Installation
