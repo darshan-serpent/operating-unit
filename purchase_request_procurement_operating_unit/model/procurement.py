@@ -19,20 +19,23 @@ class Procurement(models.Model):
             })
         return res
 
-    @api.one
+    @api.multi
     @api.constrains('location_id', 'request_id')
     def _check_purchase_request_operating_unit(self):
-        if self.request_id and self.location_id.operating_unit_id and\
-            self.request_id.operating_unit_id !=\
-                self.location_id.operating_unit_id:
-            raise Warning(_('The Purchase Request and the Procurement Order '
-                            'must belong to the same Operating Unit.'))
+        for proc in self:
+            if proc.request_id and proc.location_id.operating_unit_id and\
+                proc.request_id.operating_unit_id !=\
+                    proc.location_id.operating_unit_id:
+                raise Warning(_('The Purchase Request and the Procurement '
+                                'Order must belong to the same '
+                                'Operating Unit.'))
 
-    @api.one
+    @api.multi
     @api.constrains('location_id', 'warehouse_id')
     def _check_warehouse_operating_unit(self):
-        if self.warehouse_id and self.location_id.operating_unit_id and\
-            self.warehouse_id.operating_unit_id !=\
-                self.location_id.operating_unit_id:
-            raise Warning(_('Warehouse and location of procurement order '
-                            'must belong to the same Operating Unit.'))
+        for proc in self:
+            if proc.warehouse_id and proc.location_id.operating_unit_id and\
+                proc.warehouse_id.operating_unit_id !=\
+                    proc.location_id.operating_unit_id:
+                raise Warning(_('Warehouse and location of procurement order '
+                                'must belong to the same Operating Unit.'))
