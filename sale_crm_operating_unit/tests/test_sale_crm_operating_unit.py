@@ -33,10 +33,11 @@ class TestSaleCrmOperatingUnit(common.TransactionCase):
             'type': 'opportunity'
         })
         self.sale = self.sale_model.\
-            with_context({'default_operating_unit_id': crm.operating_unit_id.id,
+            with_context({'default_operating_unit_id':
+                          crm.operating_unit_id.id,
                           'default_opportunity_id': crm.id}).\
-                            create({'partner_id': crm.partner_id.id,
-                                    'team_id': crm.team_id.id})
+            create({'partner_id': crm.partner_id.id,
+                    'team_id': crm.team_id.id})
         return crm
 
     def test_sale_crm(self):
