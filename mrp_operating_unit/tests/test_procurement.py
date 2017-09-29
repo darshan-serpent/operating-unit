@@ -42,7 +42,6 @@ class TestProcurement(common.TransactionCase):
                     'product_qty': '1',
                     'type': 'normal',
                     'product_efficiency': '1.00'})
-        return bom
 
     def _create_procurement_order(self):
         # On change for warehouse_id
@@ -65,11 +64,9 @@ class TestProcurement(common.TransactionCase):
                     'rule_id': self.rule.id,
                     'location_id': location_id
                     })
-        return order
 
     def test_security(self):
         self.assertEqual(self.procurement_order.location_id.operating_unit_id,
                          self.procurement_order.production_id.\
                          operating_unit_id,
-                         'The Operating Unit in Procurement Order Location'
                          'does not match to Manufacturing Order OU.')
